@@ -19,7 +19,7 @@ public class Main {
 		}
 		int m = count - num + 1;
 		int c = num;
-		if (count % 2 == 0) { // 라인이 홀수 일 때이거나 두번째 줄인 경우만
+		if (count % 2 == 0) { // 짝수 라인인 경우만
 			bfw.write(c + "/" + m);
 			bfw.flush();
 			bfw.close();
