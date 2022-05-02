@@ -11,7 +11,6 @@ public class Main {
 		BufferedWriter bfw = new BufferedWriter(new OutputStreamWriter(System.out));
 		PriorityQueue<Integer> heap = new PriorityQueue<Integer>();
 		int value = Integer.parseInt(bfr.readLine());
-		int arr[] = new int [value];
 		
 		for (int i = 0; i < value; i++) {
 			heap.add(Integer.parseInt(bfr.readLine()));
