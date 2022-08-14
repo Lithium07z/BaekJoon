@@ -1,0 +1,26 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.StringTokenizer;
+
+public class Main {
+	public static void main(String[] args) throws IOException {
+		BufferedReader bfr = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bfw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(bfr.readLine());
+		int A = Integer.parseInt(st.nextToken());
+		int B = Integer.parseInt(st.nextToken());
+		int C = A % B * 10;
+		
+		bfw.write(String.valueOf(A / B + "."));
+		for (int i = 0; i < 1001; i++) {
+			bfw.write(String.valueOf(C / B));
+			C %= B;
+			C *= 10;
+		}
+		bfw.flush();
+		bfw.close();
+	}
+}
