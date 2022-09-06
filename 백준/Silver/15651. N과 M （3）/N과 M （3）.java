@@ -1,13 +1,10 @@
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
 public class Main {
-	static BufferedWriter bfw = new BufferedWriter(new OutputStreamWriter(System.out));
 	static LinkedList<Integer> list = new LinkedList<Integer>();
 	static StringBuilder sb = new StringBuilder();
 	public static void main(String[] args) throws IOException {
@@ -18,9 +15,7 @@ public class Main {
 		int M = Integer.parseInt(st.nextToken());
 		
 		dfs(N, M);
-		bfw.write(String.valueOf(sb));
-		bfw.flush();
-		bfw.close();
+		System.out.println(sb);
 	}
 	
 	public static void dfs(int N, int M) throws IOException {
