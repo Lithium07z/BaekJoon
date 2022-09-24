@@ -20,15 +20,14 @@ public class Main {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
+		Loop1 :
 		for (int i = 1; i < arr.length; i++) {
 			for (int j = 0; j < arr.length - 1; j++) {
 				if (arr[j] > arr[j + 1]) {
 					countNum++;
 					if (countNum == checkNum) {
 						bfw.write(arr[j + 1] + " " + arr[j]);
-						bfw.flush();
-						bfw.close();
-						break;
+						break Loop1;
 					}
 					int temp = arr[j];
 					arr[j] = arr[j + 1];
@@ -37,7 +36,9 @@ public class Main {
 			}
 		}
 		if (countNum != checkNum) {
-			System.out.println("-1");
+			bfw.write("-1");
 		}
+		bfw.flush();
+		bfw.close();
 	}
 }
