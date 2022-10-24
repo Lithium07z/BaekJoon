@@ -27,6 +27,8 @@ public class Main{
 			}
 		}
 		
-		System.out.printf("%.10f", water / leaf);
+		bfw.write(String.valueOf(water / leaf));
+		bfw.flush();
+		bfw.close();
 	}
 }
