@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -28,33 +26,16 @@ public class Main {
 
 		Arrays.sort(arr);
 		
-		while (true) {
+		while (s < e) {
+			if (Math.abs(arr[s] + arr[e]) < min) {
+				min = Math.abs(arr[s] + arr[e]);
+				rs = s;
+				re = e;
+			}
 			if (arr[s] + arr[e] > 0) {
-				if (Math.abs(arr[s] + arr[e]) < min) {
-					min = Math.abs(arr[s] + arr[e]);
-					rs = s;
-					re = e;
-				}
 				e--;
-				if (s >= e) {
-					bw.write(arr[rs] + " " + arr[re]);
-					bw.flush();
-					bw.close();
-					return;
-				}
 			} else if (arr[s] + arr[e] < 0) {
-				if (Math.abs(arr[s] + arr[e]) < min) {
-					min = Math.abs(arr[s] + arr[e]);
-					rs = s;
-					re = e;
-				}
 				s++;
-				if (s >= e) {
-					bw.write(arr[rs] + " " + arr[re]);
-					bw.flush();
-					bw.close();
-					return;
-				}
 			} else {
 				bw.write(arr[s] + " " + arr[e]);
 				bw.flush();
@@ -62,5 +43,9 @@ public class Main {
 				return;
 			}
 		}
+		bw.write(arr[rs] + " " + arr[re]);
+		bw.flush();
+		bw.close();
+		return;
 	}
 }
