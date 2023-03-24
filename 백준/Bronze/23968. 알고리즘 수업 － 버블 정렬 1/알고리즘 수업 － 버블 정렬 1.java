@@ -7,38 +7,58 @@ import java.util.StringTokenizer;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		BufferedReader bfr = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bfw = new BufferedWriter(new OutputStreamWriter(System.out));
-		StringTokenizer st = new StringTokenizer(bfr.readLine());
-		
-		int arr[] = new int[Integer.parseInt(st.nextToken())];
-		int checkNum = Integer.parseInt(st.nextToken());
-		int countNum = 0;
-		
-		st = new StringTokenizer(bfr.readLine());
-		for (int i = 0; i < arr.length; i++) {
-			arr[i] = Integer.parseInt(st.nextToken());
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int N = Integer.parseInt(st.nextToken());
+		int K = Integer.parseInt(st.nextToken());
+		int A[] = new int[N];
+		int idx[] = new int[N - 1];
+
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < N; i++) {
+			A[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		Loop1 :
-		for (int i = 1; i < arr.length; i++) {
-			for (int j = 0; j < arr.length - 1; j++) {
-				if (arr[j] > arr[j + 1]) {
-					countNum++;
-					if (countNum == checkNum) {
-						bfw.write(arr[j + 1] + " " + arr[j]);
-						break Loop1;
+		for (int i = 0; i < N - 1; i++) {
+			idx[i] = i;
+		}
+		
+		if (N * (N - 1) / 2 < K) {
+			bw.write("-1");
+			bw.flush();
+			bw.close();
+			return;
+		}
+		
+		while (idx.length > 0) {
+			int tempIdx[] = new int[idx.length];
+			int p = 0;
+			
+			for (int idxP : idx) {
+				if (A[idxP] > A[idxP + 1]) {
+					int temp = A[idxP];
+					A[idxP] = A[idxP + 1];
+					A[idxP + 1] = temp;
+					if (--K == 0) {
+						bw.write(A[idxP] + " " + A[idxP + 1]);
+						bw.flush();
+						bw.close();
+						return;
 					}
-					int temp = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = temp;
+					if (idxP > 0) {
+						tempIdx[p++] = idxP - 1;
+					}
 				}
 			}
+			
+			idx = new int[p];
+			for (int i = 0; i < p; i++) {
+				idx[i] = tempIdx[i];
+			}
 		}
-		if (countNum != checkNum) {
-			bfw.write("-1");
-		}
-		bfw.flush();
-		bfw.close();
+		bw.write("-1");
+		bw.flush();
+		bw.close();
 	}
 }
