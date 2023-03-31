@@ -8,20 +8,19 @@ import java.util.StringTokenizer;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
-		BufferedReader bfr = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bfw = new BufferedWriter(new OutputStreamWriter(System.out));
-		StringTokenizer st = new StringTokenizer(bfr.readLine());
-		int num = Integer.parseInt(st.nextToken());
-		int limit = Integer.parseInt(st.nextToken());
-		int arr[] = new int[num];
-		
-		st = new StringTokenizer(bfr.readLine());
-		for (int i = 0; i < num; i++) {
-			arr[i] = Integer.parseInt(st.nextToken());
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		short n = Short.parseShort(st.nextToken());
+		short l = Short.parseShort(st.nextToken());
+		short a[] = new short[n];
+		st = new StringTokenizer(br.readLine());
+		for (short i = 0; i < n; i++) {
+			a[i] = Short.parseShort(st.nextToken());
 		}
-		Arrays.sort(arr);
-		bfw.write(String.valueOf(arr[num - limit]));
-		bfw.flush();
-		bfw.close();
+		Arrays.sort(a);
+		bw.write(a[n - l] + "\n");
+		bw.flush();
+		bw.close();
 	}
 }
