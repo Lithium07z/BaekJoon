@@ -38,18 +38,6 @@ class Main {
 			}
 		}
 		
-//		System.out.println();
-//		for (int i = 0; i < N; i++) {
-//			for (int j = 0; j < N; j++) {
-//				if (graph[i][j] == INF) {
-//					System.out.print("0 ");
-//				} else {
-//					System.out.print(graph[i][j] + " ");
-//				}
-//			}
-//			System.out.println();
-//		}
-		
 		int K = Integer.parseInt(br.readLine());
 		st = new StringTokenizer(br.readLine());
 		int city[] = new int[st.countTokens()];
