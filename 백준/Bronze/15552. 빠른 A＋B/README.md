@@ -1,14 +1,14 @@
-# [Bronze II] 빠른 A+B - 15552 
+# [Bronze IV] 빠른 A+B - 15552 
 
 [문제 링크](https://www.acmicpc.net/problem/15552) 
 
 ### 성능 요약
 
-메모리: 236292 KB, 시간: 884 ms
+메모리: 21348 KB, 시간: 212 ms
 
 ### 분류
 
-사칙연산(arithmetic), 구현(implementation), 수학(math)
+구현, 사칙연산, 수학
 
 ### 문제 설명
 
