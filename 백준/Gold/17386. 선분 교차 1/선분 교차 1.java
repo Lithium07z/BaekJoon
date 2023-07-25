@@ -6,33 +6,38 @@ import java.io.OutputStreamWriter;
 import java.math.BigInteger;
 import java.util.StringTokenizer;
 
-public class Main {
+class Main {
 	public static void main(String args[]) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		long arr[][] = new long[2][4];
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int x1 = Integer.parseInt(st.nextToken());
+		int y1 = Integer.parseInt(st.nextToken());
+		int x2 = Integer.parseInt(st.nextToken());
+		int y2 = Integer.parseInt(st.nextToken());
 		
-		for (int i = 0; i < 2; i++) {
-			StringTokenizer st = new StringTokenizer(br.readLine());
-			for (int j = 0; j < 4; j++) {
-				arr[i][j] = Integer.parseInt(st.nextToken());
-			}
-		}
+		st = new StringTokenizer(br.readLine());
+		int x3 = Integer.parseInt(st.nextToken());
+		int y3 = Integer.parseInt(st.nextToken());
+		int x4 = Integer.parseInt(st.nextToken());
+		int y4 = Integer.parseInt(st.nextToken());
 		
-		BigInteger BA0 = new BigInteger(String.valueOf(arr[0][0] - arr[0][2]));
-		BigInteger BA1 = new BigInteger(String.valueOf(arr[0][1] - arr[0][3]));
-		BigInteger BC0 = new BigInteger(String.valueOf(arr[1][0] - arr[0][2]));
-		BigInteger BC1 = new BigInteger(String.valueOf(arr[1][1] - arr[0][3]));
-		BigInteger BD0 = new BigInteger(String.valueOf(arr[1][2] - arr[0][2]));
-		BigInteger BD1 = new BigInteger(String.valueOf(arr[1][3] - arr[0][3]));
-		BigInteger AC0 = new BigInteger(String.valueOf(arr[1][0] - arr[0][0]));
-		BigInteger AC1 = new BigInteger(String.valueOf(arr[1][1] - arr[0][1]));
-		BigInteger AD0 = new BigInteger(String.valueOf(arr[1][2] - arr[0][0]));
-		BigInteger AD1 = new BigInteger(String.valueOf(arr[1][3] - arr[0][1]));
+		BigInteger BAx = new BigInteger(String.valueOf(x1 - x2));
+		BigInteger BAy = new BigInteger(String.valueOf(y1 - y2));
+		BigInteger ACx = new BigInteger(String.valueOf(x3 - x1));
+		BigInteger ACy = new BigInteger(String.valueOf(y3 - y1));
+		BigInteger ADx = new BigInteger(String.valueOf(x4 - x1));
+		BigInteger ADy = new BigInteger(String.valueOf(y4 - y1));
+		BigInteger CDx = new BigInteger(String.valueOf(x4 - x3));
+		BigInteger CDy = new BigInteger(String.valueOf(y4 - y3));
+		BigInteger DAx = new BigInteger(String.valueOf(x1 - x4));
+		BigInteger DAy = new BigInteger(String.valueOf(y1 - y4));
+		BigInteger DBx = new BigInteger(String.valueOf(x2 - x4));
+		BigInteger DBy = new BigInteger(String.valueOf(y2 - y4));
 		BigInteger zero = new BigInteger("0");
 		
-		if ( (((BA0.multiply(BC1)).subtract((BA1.multiply(BC0)))).multiply((BA0.multiply(BD1)).subtract((BA1.multiply(BD0))))).compareTo(zero) == -1 && 
-				(((BC0.multiply(BD1)).subtract((BC1.multiply(BD0)))).multiply((AC0.multiply(AD1)).subtract((AC1.multiply(AD0))))).compareTo(zero) == -1)  {
+		if (((BAx.multiply(ACy)).subtract(BAy.multiply(ACx))).multiply((BAx.multiply(ADy)).subtract(BAy.multiply(ADx))).compareTo(zero) == -1 &&
+				((CDx.multiply(DAy)).subtract(CDy.multiply(DAx))).multiply((CDx.multiply(DBy)).subtract(CDy.multiply(DBx))).compareTo(zero) == -1) {
 			bw.write("1");
 		} else {
 			bw.write("0");
@@ -40,5 +45,5 @@ public class Main {
 		
 		bw.flush();
 		bw.close();
-	}	
+	}
 }
