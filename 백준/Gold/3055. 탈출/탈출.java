@@ -17,24 +17,23 @@ public class Main {
 		Queue<Point> q = new LinkedList<Point>();
 		int R = Integer.parseInt(st.nextToken());
 		int C = Integer.parseInt(st.nextToken());
-		int dx[] = { -1, 1, 0, 0 };
-		int dy[] = { 0, 0, -1, 1 };
 		char building[][] = new char[R][C];
 		int graph[][] = new int[R][C];
-
+		int dx[] = { -1, 1, 0, 0 };
+		int dy[] = { 0, 0, -1, 1 };
+		
 		for (int i = 0; i < R; i++) {
 			String temp = br.readLine();
 			for (int j = 0; j < C; j++) {
 				building[i][j] = temp.charAt(j);
 				if (building[i][j] == 'S') {
-					graph[i][j] = 1;	
 					q.add(new Point(i, j));
 				} else if (building[i][j] == '*') {
 					list.add(new Point(i, j));
 				}
 			}
 		}
-		
+
 		q.addAll(list);
 
 		while (!q.isEmpty()) {
@@ -53,12 +52,12 @@ public class Main {
 
 				if (building[nowX][nowY] == 'S') {
 					if (building[nextX][nextY] == 'D') {
-						bw.write(graph[nowX][nowY] + "\n");
+						bw.write(graph[nowX][nowY] + 1 + "\n");
 						bw.flush();
 						bw.close();
 						return;
 					}
-					
+
 					if (building[nextX][nextY] == '.') {
 						building[nextX][nextY] = 'S';
 						graph[nextX][nextY] = graph[nowX][nowY] + 1;
