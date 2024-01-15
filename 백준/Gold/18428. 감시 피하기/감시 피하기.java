@@ -11,8 +11,6 @@ public class Main {
 	static LinkedList<Point> teacher = new LinkedList<Point>();
 	static boolean visited[][];
 	static String graph[][];
-	static String result = "";
-	static boolean flag;
 	static int dx[] = { -1, 1, 0, 0 };
 	static int dy[] = { 0, 0, -1, 1 };
 
@@ -34,16 +32,14 @@ public class Main {
 			}
 		}
 
-		DFS(0, 0, 0);
+		DFS(0);
 		
 		bw.write("NO");
 		bw.flush();
 		bw.close();
 	}
 
-	static int cnt = 0;
-
-	public static void DFS(int x, int y, int cnt) throws IOException {
+	public static void DFS(int cnt) throws IOException {
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		if (cnt == 3) {
@@ -75,7 +71,7 @@ public class Main {
 			for (int j = 0; j < graph.length; j++) {
 				if (graph[i][j].equals("X") && !visited[i][j]) {
 					visited[i][j] = true;
-					DFS(i, j, cnt + 1);
+					DFS(cnt + 1);
 					visited[i][j] = false;
 				}
 			}
