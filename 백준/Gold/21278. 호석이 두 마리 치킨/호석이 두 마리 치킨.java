@@ -41,17 +41,31 @@ public class Main {
 				}
 			}
 		}
+
+//		for (int i = 0; i < N; i++) {
+//			for (int j = 0; j < N; j++) {
+//				if (graph[i][j] == INF) {
+//					System.out.print("N ");
+//				} else {
+//					System.out.print(graph[i][j] + " ");
+//				}
+//			}
+//			System.out.println();
+//		}
 		
 		for (int i = 0; i < N - 1; i++) {
-			int sum = 0;
-			
 			for (int j = i + 1; j < N; j++) {
+					int sum = 0;
+				
 					for (int k = 0; k < N; k++) {
 						sum += Math.min(graph[i][k], graph[j][k]);
 					}
-					result = Math.min(result, sum);
-					X = Math.min(X, i);
-					Y = Math.min(Y, j);
+					
+					if (result > sum) {
+						result = sum;
+						X = i;
+						Y = j;
+					}
 			}
 		}
 
