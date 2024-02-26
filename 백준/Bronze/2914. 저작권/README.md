@@ -1,4 +1,4 @@
-# [Bronze V] 저작권 - 2914 
+# [Bronze III] 저작권 - 2914 
 
 [문제 링크](https://www.acmicpc.net/problem/2914) 
 
@@ -8,7 +8,11 @@
 
 ### 분류
 
-사칙연산(arithmetic), 구현(implementation), 수학(math)
+구현, 사칙연산, 수학
+
+### 제출 일자
+
+2022년 5월 17일 20:25:11
 
 ### 문제 설명
 
