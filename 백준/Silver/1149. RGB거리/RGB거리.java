@@ -8,9 +8,6 @@ import java.util.StringTokenizer;
 public class Main {
 	static int cost[][];
 	static int dp[][];
-	static int r = 0;
-	static int g = 1;
-	static int b = 2;
 	
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -22,18 +19,18 @@ public class Main {
 		for (int i = 0; i < N; i++) {
 			st = new StringTokenizer(br.readLine());
 			
-			cost[i][r] = Integer.parseInt(st.nextToken());
-			cost[i][g] = Integer.parseInt(st.nextToken());
-			cost[i][b] = Integer.parseInt(st.nextToken());
+			cost[i][0] = Integer.parseInt(st.nextToken());
+			cost[i][1] = Integer.parseInt(st.nextToken());
+			cost[i][2] = Integer.parseInt(st.nextToken());
 		}
 		
 		for (int i = 1; i < N; i++) {
-			cost[i][r] += Math.min(cost[i - 1][g], cost[i - 1][b]);
-			cost[i][g] += Math.min(cost[i - 1][r], cost[i - 1][b]);
-			cost[i][b] += Math.min(cost[i - 1][r], cost[i - 1][g]);
+			cost[i][0] += Math.min(cost[i - 1][1], cost[i - 1][2]);
+			cost[i][1] += Math.min(cost[i - 1][0], cost[i - 1][2]);
+			cost[i][2] += Math.min(cost[i - 1][0], cost[i - 1][1]);
 		}
 		
-		bw.write(Math.min(Math.min(cost[N - 1][r], cost[N - 1][g]), cost[N - 1][b]) + "\n");
+		bw.write(Math.min(Math.min(cost[N - 1][0], cost[N - 1][1]), cost[N - 1][2]) + "\n");
 		bw.flush();
 		bw.close();
 	}
